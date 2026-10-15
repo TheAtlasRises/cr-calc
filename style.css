@@ -1,0 +1,56 @@
+:root {
+    --bg-color: #f4f7f6;
+    --sidebar-bg: #2c3e50;
+    --primary: #3498db;
+    --primary-hover: #2980b9;
+    --text-main: #333;
+    --text-light: #ecf0f1;
+    --card-bg: #ffffff;
+    --danger: #e74c3c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-main); }
+.app-container { display: flex; min-height: 100vh; flex-direction: row; }
+
+/* Sidebar */
+.sidebar { width: 260px; background-color: var(--sidebar-bg); color: var(--text-light); padding: 20px; display: flex; flex-direction: column; }
+.sidebar h2 { font-size: 1.2rem; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #34495e; padding-bottom: 15px; }
+.nav-btn { background: none; border: none; color: var(--text-light); padding: 15px; width: 100%; text-align: left; cursor: pointer; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s; font-size: 1rem; }
+.nav-btn:hover, .nav-btn.active { background-color: var(--primary); }
+
+/* Content */
+.content { flex: 1; padding: 30px; overflow-y: auto; }
+.page { animation: fadeIn 0.4s ease-in-out; }
+h1 { margin-bottom: 25px; color: #2c3e50; }
+
+/* Cards */
+.card { background: var(--card-bg); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.form-card { display: flex; flex-wrap: wrap; gap: 15px; }
+input, select { flex: 1; min-width: 150px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; }
+.action-btn { background-color: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.action-btn:hover { background-color: var(--primary-hover); }
+.calculate-btn { width: 100%; margin-top: 15px; font-size: 1.1rem; padding: 15px; }
+.danger-btn { background-color: var(--danger); color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+
+/* List & Tables */
+ul { list-style: none; }
+li.course-item { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; align-items: center; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+th { background-color: var(--primary); color: white; }
+
+/* CR Display */
+.cr-card { text-align: center; }
+.cr-value { font-size: 3rem; font-weight: bold; color: var(--primary); margin-top: 10px; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .app-container { flex-direction: column; }
+    .sidebar { width: 100%; padding: 15px; }
+    .sidebar h2 { margin-bottom: 15px; }
+    .nav-btn { padding: 10px; margin-bottom: 5px; text-align: center; }
+    .content { padding: 15px; }
+}
+

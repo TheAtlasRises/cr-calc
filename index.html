@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de CR Acadêmico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2>Menu Acadêmico</h2>
+            <nav>
+                <button onclick="nav('atual')" class="nav-btn active" id="btn-atual">Semestre Atual</button>
+                <button onclick="nav('resultados')" class="nav-btn" id="btn-resultados">Resultados do CR</button>
+                <button onclick="nav('gerenciar')" class="nav-btn" id="btn-gerenciar">Gerenciar Semestres</button>
+                <button onclick="nav('disciplinas')" class="nav-btn" id="btn-disciplinas">Explorar Disciplinas</button>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <!-- Página 1: Semestre Atual -->
+            <section id="atual" class="page active">
+                <h1>Inserir Notas - Semestre Atual</h1>
+                <div class="card form-card">
+                    <select id="course-select"><option value="">Selecione uma matéria...</option></select>
+                    <input type="number" id="p1" placeholder="Nota P1 (0-10)" min="0" max="10" step="0.1">
+                    <input type="number" id="p2" placeholder="Nota P2 (0-10)" min="0" max="10" step="0.1">
+                    <input type="number" id="p3" placeholder="Nota P3 (0-10)" min="0" max="10" step="0.1">
+                    <button onclick="addCourseToSemester()" class="action-btn">Adicionar Matéria</button>
+                </div>
+                
+                <div class="card list-card">
+                    <h3>Matérias Adicionadas</h3>
+                    <ul id="current-semester-list"></ul>
+                    <button onclick="nav('resultados')" class="action-btn calculate-btn">Calcular Desempenho</button>
+                </div>
+            </section>
+
+            <!-- Página 2: Resultados -->
+            <section id="resultados" class="page" style="display:none;">
+                <h1>Resultados e Desempenho</h1>
+                <div class="card cr-card">
+                    <h3>Seu CR Global</h3>
+                    <div id="cr-display" class="cr-value">0.0000</div>
+                </div>
+                <div class="card stats-card" id="stats-container"></div>
+            </section>
+
+            <!-- Página 3: Gerenciar Semestres -->
+            <section id="gerenciar" class="page" style="display:none;">
+                <h1>Gerenciar Semestres</h1>
+                <div class="card">
+                    <input type="text" id="new-semester-name" placeholder="Ex: 2026.2">
+                    <button onclick="createNewSemester()" class="action-btn">Criar Novo Semestre Vazio</button>
+                </div>
+                <div id="semesters-list" class="semesters-grid"></div>
+            </section>
+
+            <!-- Página 4: Matérias do Curso -->
+            <section id="disciplinas" class="page" style="display:none;">
+                <h1>Estrutura Curricular</h1>
+                <div class="card table-card">
+                    <table id="course-table">
+                        <thead><tr><th>Código</th><th>Disciplina</th><th>Créditos</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
